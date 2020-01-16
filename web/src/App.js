@@ -22,7 +22,7 @@ function App() {
 
   async function handleSubmit(data) {
     const response = await api.post('/devs', data);
-
+    
     setDevs([...devs, response.data]);
   }
 
