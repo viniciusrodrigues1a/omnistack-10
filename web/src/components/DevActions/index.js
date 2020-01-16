@@ -32,7 +32,14 @@ function DevActions({ dev, setFormStatus }) {
             className="dev-action-img" 
             src={updateIcon} 
             alt="Update"
-            onClick={() => setFormStatus({ status: 'update', name: dev.name, id: dev._id })}
+            onClick={() => {
+              setFormStatus({ 
+                status: 'update', 
+                name: dev.name, 
+                id: dev._id,
+              });
+            }}
+
           />
         </OverlayTrigger>
 
