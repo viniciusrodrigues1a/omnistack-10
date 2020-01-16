@@ -36,5 +36,7 @@ module.exports = {
     
       return res.json(dev);
     }
+
+    return res.send('Usuário já cadastrado!');
   },
 }
