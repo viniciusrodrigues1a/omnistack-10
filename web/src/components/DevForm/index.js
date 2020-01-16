@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './styles.css';
 
-function DevForm({ onSubmit }) {
+function DevForm({ onSubmit, status, setStatus, dev }) {
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [techsBadges, setTechsBadges] = useState([]);
@@ -29,20 +29,27 @@ function DevForm({ onSubmit }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const techsString = techsBadges.join(', ');
+    let techsString = "";
+    if (techsBadges.length === 0) {
+      const inputElemValue = document.querySelector("#techs").value;
+      
+      if (isStringAllowed(inputElemValue)) {
+        techsString = inputElemValue;
+      }
+    } else {
+      techsString = techsBadges.join(', ');
+    }
 
     await onSubmit({
       github_username,
       techs: techsString,
       latitude,
       longitude,
-    });
+    }, status);
 
     setGithubUsername('');
     setTechs('');
     setTechsBadges([]);
-    setLatitude('');
-    setLongitude('');
   }
 
   function addClassName(element, className) {
@@ -54,17 +61,20 @@ function DevForm({ onSubmit }) {
     }
   }
 
+  function isStringAllowed(string, regex=/^[\w\-\s]*\w+$/) {
+    return (regex.exec(string) && string.length <= 25);
+  }
+
   function addTechBadges(e) {
     const text = e.target.value;
     const textLastCharTyped = text.split('').reverse().join('')[0];
     const textWithoutLastCharTyped = text.substring(0, text.length - 1);
-    const regex = /^[\w\-\s]*\w+$/;
     setTechs(text);
 
     switch (textLastCharTyped) {
       case ',':
       case ';':
-        if (regex.exec(textWithoutLastCharTyped) && textWithoutLastCharTyped.length <= 25) {
+        if (isStringAllowed(textWithoutLastCharTyped)) {
           if (techsBadges.indexOf(textWithoutLastCharTyped) < 0) {
             setTechsBadges([...techsBadges, textWithoutLastCharTyped]);
           } else {
@@ -89,67 +99,89 @@ function DevForm({ onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="input-block">
-        <label htmlFor="github_username">Usuário do GitHub</label>
-        <input
-          name="github_username"
-          id="github_username"
-          required
-          value={github_username}
-          onChange={e => setGithubUsername(e.target.value)}
-        />
-      </div>
-
-      <div className="input-block relative">
-        <label htmlFor="techs">Tecnologias</label>
-        <input
-          name="techs"
-          id="techs"
-          value={techs}
-          onChange={(e) => addTechBadges(e)}
-        />
-        <span id="tooltip">As tecnologias devem ser entre 3-25 caracteres e sem caracteres especiais!</span>
-      </div>
-      {techsBadges.map((tech, index) => (
-        <div key={tech} className="tech-badge-wrapper">
-          <span className="tech-badge-span" id={`badge-${tech}`}>{tech}</span>
-          <button className="tech-badge-btn" onClick={() => removeTechBadges(tech, index)}>
-            X
-          </button>
-        </div>
-      ))}
-
-      <div className="input-group">
+    <div>
+      <h1 id="dev-form-heading">{(status[0] === 'create') ? 'Cadastrar' : 'Atualizar'}</h1>
+      <span 
+        style={{ 
+          fontSize: 12 + 'px', 
+          textAlign: 'center',
+          display: 'block',
+        }}
+      >
+        {status[1]}
+      </span>
+      <form onSubmit={handleSubmit}>
         <div className="input-block">
-          <label htmlFor="latitude">Latitude</label>
+          <label htmlFor="github_username">Usuário do GitHub</label>
           <input
-            type="number"
-            name="latitude"
-            id="latitude"
+            name="github_username"
+            id="github_username"
             required
-            step="any"
-            value={latitude}
-            onChange={e => setLatitude(e.target.value)}
+            value={github_username}
+            onChange={e => setGithubUsername(e.target.value)}
           />
         </div>
 
-        <div className="input-block">
-          <label htmlFor="longitude">Latitude</label>
+        <div className="input-block relative">
+          <label htmlFor="techs">Tecnologias</label>
           <input
-            type="number"
-            name="longitude"
-            id="longitude"
-            required
-            step="any"
-            value={longitude}
-            onChange={e => setLongitude(e.target.value)}
+            name="techs"
+            id="techs"
+            value={techs}
+            onChange={(e) => addTechBadges(e)}
           />
+          <span id="tooltip">As tecnologias devem ser entre 3-25 caracteres e sem caracteres especiais!</span>
         </div>
-      </div>
+        {techsBadges.map((tech, index) => (
+          <div key={tech} className="tech-badge-wrapper">
+            <span className="tech-badge-span" id={`badge-${tech}`}>{tech}</span>
+            <button className="tech-badge-btn" onClick={() => removeTechBadges(tech, index)}>
+              X
+            </button>
+          </div>
+        ))}
 
-      <button type="submit">Salvar</button>
-    </form>
+        <div className="input-group">
+          <div className="input-block">
+            <label htmlFor="latitude">Latitude</label>
+            <input
+              type="number"
+              name="latitude"
+              id="latitude"
+              required
+              step="any"
+              value={latitude}
+              onChange={e => setLatitude(e.target.value)}
+            />
+          </div>
+
+          <div className="input-block">
+            <label htmlFor="longitude">Latitude</label>
+            <input
+              type="number"
+              name="longitude"
+              id="longitude"
+              required
+              step="any"
+              value={longitude}
+              onChange={e => setLongitude(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex' }}>
+          {(status[0] === 'update') ? 
+            <button 
+              className="form-btn"
+              onClick={() => setStatus(['create', ''])}
+            >
+              Cancelar
+            </button> : null}
+          <button type="submit" className="form-btn">Salvar</button>
+        </div>
+
+      </form>
+    </div>
   )
 }
 

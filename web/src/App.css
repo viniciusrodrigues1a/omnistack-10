@@ -28,4 +28,10 @@
   #app #tooltip {
     display: none;
   }
+
+  #app .update-anim {
+    animation-name: none;
+    animation-duration: none;
+    animation-fill-mode: none;
+  }
 }

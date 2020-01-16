@@ -2,7 +2,9 @@ import React from 'react';
 
 import './styles.css';
 
-function DevItem({ dev }) {
+import DevActions from '../DevActions';
+
+function DevItem({ dev, status, setStatus }) {
   return (
     <li className="dev-item">
       <header>
@@ -13,7 +15,11 @@ function DevItem({ dev }) {
         </div>
       </header>
       <p className="user-bio">{dev.bio}</p>
-      <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no GitHub</a>
+      <DevActions 
+        dev={dev} 
+        status={status} 
+        setStatus={setStatus} 
+      />
     </li>
   )
 }
