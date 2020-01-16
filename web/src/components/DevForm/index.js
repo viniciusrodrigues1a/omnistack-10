@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './styles.css';
 
-function DevForm({ onSubmit, status, setStatus, dev }) {
+function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [techsBadges, setTechsBadges] = useState([]);
@@ -45,7 +45,7 @@ function DevForm({ onSubmit, status, setStatus, dev }) {
       techs: techsString,
       latitude,
       longitude,
-    }, status);
+    }, formStatus);
 
     setGithubUsername('');
     setTechs('');
@@ -100,7 +100,7 @@ function DevForm({ onSubmit, status, setStatus, dev }) {
 
   return (
     <div>
-      <h1 id="dev-form-heading">{(status[0] === 'create') ? 'Cadastrar' : 'Atualizar'}</h1>
+      <h1 id="dev-form-heading">{(formStatus.status === 'create') ? 'Cadastrar' : 'Atualizar'}</h1>
       <span 
         style={{ 
           fontSize: 12 + 'px', 
@@ -108,7 +108,7 @@ function DevForm({ onSubmit, status, setStatus, dev }) {
           display: 'block',
         }}
       >
-        {status[1]}
+        {formStatus.name}
       </span>
       <form onSubmit={handleSubmit}>
         <div className="input-block">
@@ -170,10 +170,10 @@ function DevForm({ onSubmit, status, setStatus, dev }) {
         </div>
 
         <div style={{ display: 'flex' }}>
-          {(status[0] === 'update') ? 
+          {(formStatus.status === 'update') ? 
             <button 
               className="form-btn"
-              onClick={() => setStatus(['create', ''])}
+              onClick={() => setFormStatus({ status: 'create' })}
             >
               Cancelar
             </button> : null}

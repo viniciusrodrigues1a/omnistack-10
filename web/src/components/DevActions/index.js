@@ -6,7 +6,7 @@ import './styles.css';
 import deleteIcon from '../../assets/images/delete-icon.png';
 import updateIcon from '../../assets/images/update-icon.png';
 
-function DevActions({ dev, status, setStatus }) {
+function DevActions({ dev, setFormStatus }) {
   async function handleDeleteButton(id) {
     await api.delete(`/devs/${id}`)
   }
@@ -32,7 +32,7 @@ function DevActions({ dev, status, setStatus }) {
             className="dev-action-img" 
             src={updateIcon} 
             alt="Update"
-            onClick={() => setStatus(['update', dev.name, dev._id])}
+            onClick={() => setFormStatus({ status: 'update', name: dev.name, id: dev._id })}
           />
         </OverlayTrigger>
 
@@ -51,7 +51,7 @@ function DevActions({ dev, status, setStatus }) {
             alt="Delete"
             onClick={() => {
               handleDeleteButton(dev._id);
-              setStatus(['create', '']);
+              setFormStatus({ status: 'create' });
             }}
           />
         </OverlayTrigger>
@@ -59,6 +59,5 @@ function DevActions({ dev, status, setStatus }) {
     </div>
   )
 }
-
 
 export default DevActions;

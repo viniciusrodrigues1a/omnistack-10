@@ -11,7 +11,7 @@ import DevForm from './components/DevForm';
 
 function App() {
   const [devs, setDevs] = useState([]);
-  const [formStatus, setFormStatus] = useState(['create', '']);
+  const [formStatus, setFormStatus] = useState({ status: 'create' });
 
   useEffect(() => {
     (async function loadDevs() {
@@ -21,14 +21,12 @@ function App() {
     })();
   }, [devs]);
 
-  async function handleSubmit(data, status) {
-      if (status[0] === 'create') {
+  async function handleSubmit(data, formStatus) {
+      if (formStatus.status === 'create') {
         const response = await api.post('/devs', data);
         setDevs([...devs, response.data]);
-      } else if (status[0] === 'update') {
-        let id = status[2];
-        console.log(id)
-        const response = await api.put(`/devs/${id}`, data);
+      } else if (formStatus.status === 'update') {
+        const response = await api.put(`/devs/${formStatus.id}`, data);
         console.log(response);
         setDevs([...devs]);
       }
@@ -36,11 +34,11 @@ function App() {
 
   return (
     <div id="app" style={{ position: 'relative' }}>
-      <aside className={(formStatus[0] === 'update') ? 'update-anim' : 'create-anim'}>
+      <aside className={(formStatus.status === 'update') ? 'update-anim' : 'create-anim'}>
         <DevForm 
           onSubmit={handleSubmit} 
-          status={formStatus} 
-          setStatus={setFormStatus} 
+          formStatus={formStatus} 
+          setFormStatus={setFormStatus} 
           id="dev-form"  
         />
       </aside>
@@ -50,8 +48,8 @@ function App() {
           {devs.map(dev => (
             <DevItem 
               dev={dev}
-              status={formStatus} 
-              setStatus={setFormStatus}  
+              formStatus={formStatus} 
+              setFormStatus={setFormStatus}  
               key={dev._id} 
             />
           ))}

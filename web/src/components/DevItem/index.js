@@ -4,7 +4,7 @@ import './styles.css';
 
 import DevActions from '../DevActions';
 
-function DevItem({ dev, status, setStatus }) {
+function DevItem({ dev, formStatus, setFormStatus }) {
   return (
     <li className="dev-item">
       <header>
@@ -17,8 +17,8 @@ function DevItem({ dev, status, setStatus }) {
       <p className="user-bio">{dev.bio}</p>
       <DevActions 
         dev={dev} 
-        status={status} 
-        setStatus={setStatus} 
+        formStatus={formStatus} 
+        setFormStatus={setFormStatus} 
       />
     </li>
   )
