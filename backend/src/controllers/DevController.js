@@ -39,4 +39,17 @@ module.exports = {
 
     return res.send('Usuário já cadastrado!');
   },
+  async show(req, res) {
+    const dev = await Dev.findById(req.params.id)
+                         .then(res => res)
+                         .catch(err => {
+                           return {
+                             error: true,
+                             errMsg: 'Couldn\'t find specified id.',
+                             err
+                           }
+                         });
+
+    return res.json(dev);
+  }
 }
