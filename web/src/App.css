@@ -24,4 +24,8 @@
   #app aside {
     width: 100%;
   }
+
+  #app #tooltip {
+    display: none;
+  }
 }

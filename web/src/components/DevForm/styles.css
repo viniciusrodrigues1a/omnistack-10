@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 aside form {
   margin-top: 30px;
 }
@@ -49,4 +51,113 @@ aside form button[type=submit] {
 
 aside form button[type=submit]:hover {
   background: #6931ca;
+}
+
+.relative {
+  position: relative;
+}
+
+#tooltip {
+  background: #7d40e7;
+  color: #fff;
+  border-radius: 3px;
+  padding: 2% 6%;
+  position: absolute;
+  width: 100%;
+  left: 110%;
+  bottom: -40%;
+  visibility: hidden;
+}
+
+.tech-badge-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.tech-badge-wrapper + .tech-badge-wrapper {
+  margin-top: 1%;
+}
+
+.tech-badge-span {
+  background: #6931ca;
+  color: #fff;
+  font-size: 13px;
+  padding: 1% 4%;
+  border-radius: 2px;
+}
+
+.tech-badge-btn {
+  border: none;
+  background: none;
+  font-family: 'Nunito', 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #fff;
+  background: rgb(177, 163, 6);
+  border-radius: 5px;
+  padding: 0 4%;
+  cursor: pointer;
+}
+
+.increase-size {
+  animation-name: increase-size;
+  animation-duration: 1s;
+}
+
+.no-no {
+  animation-name: no-no;
+  animation-duration: 1s;
+}
+
+.appear {
+  animation-name: appear;
+  animation-duration: 4s;
+}
+
+@keyframes increase-size {
+  0% {
+    font-size: 13px;
+  } 
+  50% {
+    font-size: 17px;
+  }
+  100% {
+    font-size: 13px;
+  }
+}
+
+@keyframes no-no {
+  0% {
+    transform: translateX(-4px);
+    outline: 1px solid red;
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translate(-4px);
+  }
+  75% {
+    transform: translate(4px);
+  }
+  100% {
+    transform: translate(-4px);
+  }
+}
+
+@keyframes appear {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
