@@ -13,4 +13,4 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {
 app.use(express.json())
 app.use(routes);
 
-app.listen(3003);
+app.listen(process.env.PORT || 3333);
