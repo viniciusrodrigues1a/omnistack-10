@@ -9,7 +9,7 @@ Configurar a *baseURL* do axios em src/services/api.json
 
 ```js
 const api = axios.create({
-  baseURL: *baseURL*,
+  baseURL: 'baseURL',
 });
 ```
 

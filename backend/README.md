@@ -7,7 +7,7 @@
 Configurar a *conexão com banco de dados* em src/index.js
 
 ```js
-mongoose.connect(*string conexão com mongo*, {
+mongoose.connect('string de conexão com mongo', {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
 });
@@ -16,7 +16,7 @@ mongoose.connect(*string conexão com mongo*, {
 Configurar a *porta* em src/index.js
 
 ```js
-app.listen( *porta* );
+app.listen(porta);
 ```
 
 ## Instalando os módulos
