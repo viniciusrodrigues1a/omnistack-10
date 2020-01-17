@@ -1,8 +1,17 @@
-# Versão mobile do app DevRadar.
+## Pré-requisitos
+
+* yarn
+* expo
 
 ## Configurando
 
-Configurar a baseURL do axios em ./src/services/api.json.
+Configurar a *baseURL* do axios em src/services/api.json
+
+```js
+const api = axios.create({
+  baseURL: *baseURL*,
+});
+```
 
 ## Instalando os módulos
 

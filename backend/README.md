@@ -1,13 +1,13 @@
 ## Pré-requisitos
 
-* expo
+* yarn
 
 ## Configurando
 
-Configurar a conexão com banco de dados em src/index.js
+Configurar a *conexão com banco de dados* em src/index.js
 
 ```js
-mongoose.connect('CONEXÃO COM BANCO MONGO', {
+mongoose.connect(*string conexão com mongo*, {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
 });
