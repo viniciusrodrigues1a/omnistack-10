@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -10,6 +10,10 @@ function Main({ navigation }) {
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion] = useState(null);
   const [techs, setTechs] = useState('');
+  const [keyboardStatus, setKeyboardStatus] = useState({ 
+    active: false,
+    height: 20,
+  });
 
   useEffect(() => {
     (async () => {
@@ -30,6 +34,17 @@ function Main({ navigation }) {
         })
       }
     })();
+  }, []);
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', (e) => setKeyboardStatus({
+      active: true,
+      height: e.endCoordinates.height + 20,
+    }));
+    Keyboard.addListener('keyboardDidHide', () => setKeyboardStatus({
+      active: false,
+      height: 20,
+    }));
   }, []);
 
   async function loadDevs() {
@@ -85,7 +100,12 @@ function Main({ navigation }) {
           </Marker>
         ))}
       </MapView>
-      <View style={styles.searchForm}>
+      <View 
+        style={[
+          styles.searchForm,
+          { bottom: keyboardStatus.height },
+        ]}
+      >
         <TextInput 
           style={styles.searchInput}
           placeholder="Buscar devs por techs..."
@@ -137,7 +157,6 @@ const styles = StyleSheet.create({
   },
   searchForm: {
     position: 'absolute',
-    bottom: 20,
     left: 20,
     right: 20,
     zIndex: 5,
