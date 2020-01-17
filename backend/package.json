@@ -10,7 +10,7 @@
     "mongoose": "^5.8.7"
   },
   "scripts": {
-    "dev": "yarn nodemon"
+    "start": "yarn nodemon"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
