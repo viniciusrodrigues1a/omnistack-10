@@ -14,16 +14,16 @@ aside h1 {
 }
 
 .update-anim {
-  animation-name: mano;
+  animation-name: update-anim;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
 
-@keyframes mano {
+@keyframes update-anim {
   100% {
-    transform: scale(1.3);
+    transform: scale(1.2);
     margin-right: 4%;
-    margin-top: 5%;
+    margin-top: 3.5%;
   }
 }
 

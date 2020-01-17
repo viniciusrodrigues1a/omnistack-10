@@ -34,4 +34,8 @@
     animation-duration: none;
     animation-fill-mode: none;
   }
+
+  #app .dev-actions div {
+    gap: 0;
+  }
 }
