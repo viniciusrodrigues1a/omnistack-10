@@ -4,7 +4,7 @@
 
 ## Configurando
 
-Configurar a *conexão com banco de dados* em src/index.js
+Configurar a **conexão com banco de dados** em src/index.js
 
 ```js
 mongoose.connect('string de conexão com mongo', {
@@ -13,7 +13,7 @@ mongoose.connect('string de conexão com mongo', {
 });
 ```
 
-Configurar a *porta* em src/index.js
+Configurar a **porta** em src/index.js
 
 ```js
 app.listen(porta);

@@ -5,7 +5,7 @@
 
 ## Configurando
 
-Configurar a *baseURL* do axios em src/services/api.json
+Configurar a **baseURL** do axios em src/services/api.json
 
 ```js
 const api = axios.create({
