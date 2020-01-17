@@ -13,7 +13,7 @@ mongoose.connect('string de conexão com mongo', {
 });
 ```
 
-Configurar a **porta** em src/index.js
+Configurar a **porta de conexão** em src/index.js
 
 ```js
 app.listen(porta);
