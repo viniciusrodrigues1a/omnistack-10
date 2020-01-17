@@ -28,19 +28,20 @@ function DevActions({ dev, setFormStatus }) {
             </Tooltip>
           }
           >
-          <img 
-            className="dev-action-img" 
-            src={updateIcon} 
-            alt="Update"
-            onClick={() => {
-              setFormStatus({ 
-                status: 'update', 
-                name: dev.name, 
-                id: dev._id,
-              });
-            }}
-
-          />
+            <a href="#app">
+              <img 
+                className="dev-action-img" 
+                src={updateIcon} 
+                alt="Update"
+                onClick={(e) => {
+                  setFormStatus({ 
+                    status: 'update', 
+                    name: dev.name, 
+                    id: dev._id,
+                  });
+                }}
+              />
+            </a>
         </OverlayTrigger>
 
         <OverlayTrigger

@@ -34,12 +34,13 @@ function App() {
 
   return (
     <div id="app" style={{ position: 'relative' }}>
-      <aside className={(formStatus.status === 'update') ? 'update-anim' : 'create-anim'}>
+      <aside 
+        className={(formStatus.status === 'update') ? 'update-anim' : 'create-anim'}
+      >
         <DevForm 
           onSubmit={handleSubmit} 
           formStatus={formStatus} 
           setFormStatus={setFormStatus} 
-          id="dev-form"  
         />
       </aside>
 
