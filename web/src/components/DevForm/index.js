@@ -33,8 +33,12 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
     if (techsBadges.length === 0) {
       const inputElemValue = document.querySelector("#techs").value;
       
-      if (isStringAllowed(inputElemValue)) {
+      if (inputElemValue.length <= 25) {
         techsString = inputElemValue;
+      } else {
+        addClassName(document.querySelector('#techs'), 'no-no');
+        addClassName(document.querySelector('#tooltip'), 'appear');
+        return;
       }
     } else {
       techsString = techsBadges.join(', ');
@@ -61,10 +65,6 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
     }
   }
 
-  function isStringAllowed(string, regex=/^[\w\-\s]*\w+$/) {
-    return (regex.exec(string) && string.length <= 25);
-  }
-
   function addTechBadges(e) {
     e.preventDefault();
     const text = e.target.value;
@@ -75,7 +75,7 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
     switch (textLastCharTyped) {
       case ',':
       case ';':
-        if (isStringAllowed(textWithoutLastCharTyped)) {
+        if (textWithoutLastCharTyped.length <= 25) {
           if (techsBadges.indexOf(textWithoutLastCharTyped) < 0) {
             setTechsBadges([...techsBadges, textWithoutLastCharTyped]);
           } else {
@@ -130,7 +130,7 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
             value={techs}
             onChange={(e) => addTechBadges(e)}
           />
-          <span id="tooltip">As tecnologias devem ser entre 3-25 caracteres e sem caracteres especiais!</span>
+          <span id="tooltip">As tecnologias devem ter no máximo 25 caracteres!</span>
         </div>
         {techsBadges.map((tech, index) => (
           <div key={tech} className="tech-badge-wrapper">
