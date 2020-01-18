@@ -92,8 +92,6 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
   }
 
   function removeTechBadges(techName, index) {
-    const spanElem = document.querySelector(`#badge-${techName}`);
-    spanElem.parentNode.parentNode.removeChild(spanElem.parentNode);
     techsBadges.splice(index, 1);
     setTechsBadges(techsBadges);
   }
