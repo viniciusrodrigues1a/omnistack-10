@@ -41,7 +41,13 @@ async function handleUserCreationOrUpdate(github_username, techs, latitude, long
 
 module.exports = {
   async index(req, res) {
-    const devs = await Dev.find();
+    const devs = await Dev.find()
+                          .then(res => res)
+                          .catch(err => handleCatch(err));
+
+    if (devs.error) {
+      return res.status(400).send('Error');
+    }
 
     return res.json(devs);
   },
@@ -53,7 +59,7 @@ module.exports = {
     if (!dev) {
       devInfo = await handleUserCreationOrUpdate(github_username, techs, latitude, longitude);
       if (devInfo.status === 404) {
-        return res.json(devInfo.statusText);
+        return res.status(devInfo.status).send(devInfo.statusText);
       }
 
       dev = await Dev.create(devInfo);
@@ -68,12 +74,16 @@ module.exports = {
       return res.json(dev);
     }
 
-    return res.send('Usuário já cadastrado!');
+    return res.status(400).send('Error');
   },
   async show(req, res) {
     const dev = await Dev.findById(req.params.id)
-                         .then(res => res)
+                         .then(res => (res === null) ? {} : res)
                          .catch(err => handleCatch(err));
+
+    if (dev.error) {
+      return res.status(400).send('Error');
+    }
 
     return res.json(dev);
   },
@@ -83,14 +93,14 @@ module.exports = {
                          .catch(err => handleCatch(err));
 
     if (dev.error) {
-      return res.json(dev);
+      return res.status(400).send('Error');
     }
 
     const { github_username, techs, latitude, longitude } = req.body;
 
     devInfo = await handleUserCreationOrUpdate(github_username, techs, latitude, longitude);
     if (devInfo.status === 404) {
-      return res.json(devInfo.statusText);
+      return res.status(devInfo.status).send(devInfo.statusText);
     }
 
     const updatedDev = await Dev.findByIdAndUpdate(req.params.id, devInfo, {
@@ -105,8 +115,20 @@ module.exports = {
 
     const dev = await Dev.findByIdAndRemove(id, {
       useFindAndModify: false,
-    }).then(res => { return { message: `ID ${id} removed with success` } })
+    }).then(res => { 
+        if (res === null) {
+          return handleCatch({});
+        } else {
+          return { 
+            message: `ID ${id} removed with success` 
+          } 
+        }
+      })
       .catch(err => handleCatch(err));
+
+    if (dev.error) {
+      return res.status(400).send('Error');
+    }
 
     return res.json(dev);
   }
