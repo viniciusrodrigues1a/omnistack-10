@@ -1,8 +1,8 @@
-## Pré-requisitos
+## :bookmark_tabs: Pré-requisitos
 
 * yarn
 
-## Configurando
+## :wrench: Configurando
 
 Configurar a **conexão com banco de dados** em src/index.js
 
@@ -19,13 +19,13 @@ Configurar a **porta de conexão** em src/index.js
 app.listen(porta);
 ```
 
-## Instalando os módulos
+## :inbox_tray: Instalando os módulos
 
 ```sh
 yarn install axios cors express mongoose
 ```
 
-## Iniciando o projeto
+## :rocket: Iniciando o projeto
 
 ```sh
 yarn start

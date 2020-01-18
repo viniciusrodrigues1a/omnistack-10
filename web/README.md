@@ -1,8 +1,8 @@
-## Pré-requisitos
+## :bookmark_tabs:  Pré-requisitos
 
 * yarn
 
-## Configurando
+## :computer: Configurando
 
 Configurar a **baseURL** do axios em src/services/api.json
 
@@ -12,13 +12,13 @@ const api = axios.create({
 });
 ```
 
-## Instalando os módulos
+## :inbox_tray:  Instalando os módulos
 
 ```sh
 yarn install axios react-bootstrap
 ```
 
-## Iniciando o projeto
+## :rocket: Iniciando o projeto
 
 ```sh
 yarn start
