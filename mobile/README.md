@@ -16,7 +16,7 @@ const api = axios.create({
 ## :inbox_tray:  Instalando os módulos
 
 ```sh
-yarn install expo-location react-native-gesture-handler react-native-maps react-native-reanimated react-native-safe-area-context react-native-screens react-native-webview react-navigation react-navigation-stack @react-native-community/masked-view
+yarn add expo-location react-native-gesture-handler react-native-maps react-native-reanimated react-native-safe-area-context react-native-screens react-native-webview react-navigation react-navigation-stack @react-native-community/masked-view
 ```
 
 ## :rocket: Iniciando o projeto
