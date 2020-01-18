@@ -3,7 +3,7 @@
 * yarn
 * expo
 
-## :iphone: Configurando
+## :wrench: Configurando
 
 Configurar a **baseURL** do axios em src/services/api.json
 
