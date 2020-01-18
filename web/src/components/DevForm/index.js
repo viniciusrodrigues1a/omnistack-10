@@ -66,6 +66,7 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
   }
 
   function addTechBadges(e) {
+    e.preventDefault();
     const text = e.target.value;
     const textLastCharTyped = text.split('').reverse().join('')[0];
     const textWithoutLastCharTyped = text.substring(0, text.length - 1);
@@ -91,7 +92,8 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
     }
   }
 
-  function removeTechBadges(techName, index) {
+  function removeTechBadges(e, index) {
+    e.preventDefault();
     techsBadges.splice(index, 1);
     setTechsBadges(techsBadges);
   }
@@ -133,7 +135,7 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
         {techsBadges.map((tech, index) => (
           <div key={tech} className="tech-badge-wrapper">
             <span className="tech-badge-span" id={`badge-${tech}`}>{tech}</span>
-            <button className="tech-badge-btn" onClick={() => removeTechBadges(tech, index)}>
+            <button className="tech-badge-btn" onClick={(e) => removeTechBadges(e, index)}>
               X
             </button>
           </div>
