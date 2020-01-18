@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
 const parseStringAsArray = require('../utils/parseStringAsArray');
+const { findConnections, sendMessage } = require('../websocket');
 
 function handleCatch(err, errMsg='Error! (Maybe you have specified the wrong id?)') {
   return {
@@ -51,13 +52,19 @@ module.exports = {
 
     if (!dev) {
       devInfo = await handleUserCreationOrUpdate(github_username, techs, latitude, longitude);
-      console.log(devInfo)
       if (devInfo.status === 404) {
         return res.json(devInfo.statusText);
       }
 
       dev = await Dev.create(devInfo);
+
+      const sendSocketMessageTo = findConnections(
+        { latitude, longitude },
+        parseStringAsArray(techs),
+      );
     
+      sendMessage(sendSocketMessageTo, 'new-dev', dev);
+
       return res.json(dev);
     }
 
