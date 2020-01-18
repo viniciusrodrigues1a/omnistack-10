@@ -27,7 +27,6 @@ function App() {
         setDevs([...devs, response.data]);
       } else if (formStatus.status === 'update') {
         const response = await api.put(`/devs/${formStatus.id}`, data);
-        console.log(response);
         setDevs([...devs]);
       }
   }
