@@ -22,7 +22,7 @@ app.listen(porta);
 ## :inbox_tray: Instalando os módulos
 
 ```sh
-yarn add axios cors express mongoose socket.io
+yarn install 
 ```
 
 ## :rocket: Iniciando o projeto

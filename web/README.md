@@ -15,7 +15,7 @@ const api = axios.create({
 ## :inbox_tray:  Instalando os módulos
 
 ```sh
-yarn add axios react-bootstrap
+yarn install 
 ```
 
 ## :rocket: Iniciando o projeto
