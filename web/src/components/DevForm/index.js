@@ -156,7 +156,7 @@ function DevForm({ onSubmit, formStatus, setFormStatus, dev }) {
           </div>
 
           <div className="input-block">
-            <label htmlFor="longitude">Latitude</label>
+            <label htmlFor="longitude">Longitude</label>
             <input
               type="number"
               name="longitude"
