@@ -6,19 +6,19 @@
 
 <br />
 
-<h4 align="center">
+<h3 align="center">
 	Interface web:
 	<br />
 	<img src="./.images/web_screenshot.png" alt="Interface web" />
-</h4>
+</h3>
 
 <br />
 
-<h4 align="center">
+<h3 align="center">
 	Interface mobile:
 	<br />
 	<img src="./.images/mobile_screenshot.png" alt="Interface mobile" />
-</h4>
+</h3>
 
 <br />
 
