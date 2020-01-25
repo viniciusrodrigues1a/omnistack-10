@@ -5,7 +5,7 @@
 </h4>
 
 ![image](./.images/web_screenshot.png) 
-![image](././images/mobile_screenshot.png)
+![image2](././images/mobile_screenshot.png)
 
 ## :computer: Tecnologias usadas
 
