@@ -6,14 +6,16 @@
 
 <h6 align="center">
 	Interface web:
-	![web](./.images/web_screenshot.png "Interface web") 
+	<br />
+	<img src="./.images/web_screenshot.png" alt="Interface web" />
 </h6>
 
 <br />
 
 <h6 align="center">
 	Interface mobile:
-	![mobile](./.images/mobile_screenshot.png "Interface mobile")	
+	<br />
+	<img src="./.images/mobile_screenshot.png" alt="Interface mobile" />
 </h6>
 
 ## :computer: Tecnologias usadas
