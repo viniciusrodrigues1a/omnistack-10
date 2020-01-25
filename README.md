@@ -1,22 +1,22 @@
 <h1 align="center">DevRadar</h1>
 
-<h4 align="center">
+<h3 align="center">
 	Projeto desenvolvido na 10.º edição da Semana Omnistack que visa conectar desenvolvedores próximos a sua região.
 </h4>
 
-<h6 align="center">
+<h4 align="center">
 	Interface web:
 	<br />
 	<img src="./.images/web_screenshot.png" alt="Interface web" />
-</h6>
+</h4>
 
 <br />
 
-<h6 align="center">
+<h4 align="center">
 	Interface mobile:
 	<br />
 	<img src="./.images/mobile_screenshot.png" alt="Interface mobile" />
-</h6>
+</h4>
 
 ## :computer: Tecnologias usadas
 
