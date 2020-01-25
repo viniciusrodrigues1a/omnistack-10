@@ -5,8 +5,7 @@
 </h4>
 
 ![web](./.images/web_screenshot.png "Interface web") 
-# a
-![mobile](././images/mobile_screenshot.png "Interface mobile")
+![mobile](././images/mobile_screenshot.jpg "Interface mobile")
 
 ## :computer: Tecnologias usadas
 
