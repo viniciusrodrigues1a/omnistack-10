@@ -4,8 +4,9 @@
 	Projeto desenvolvido na 10.º edição da Semana Omnistack que visa conectar desenvolvedores próximos a sua região.
 </h4>
 
-![image](./.images/web_screenshot.png) 
-![image2](././images/mobile_screenshot.png)
+![web](./.images/web_screenshot.png "Interface web") 
+# a
+![mobile](././images/mobile_screenshot.png "Interface mobile")
 
 ## :computer: Tecnologias usadas
 
