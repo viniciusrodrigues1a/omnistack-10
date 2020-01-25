@@ -1,4 +1,4 @@
-<h1 align="center">DevRadar</h1>
+<h1 align="center">:earth_americas: DevRadar</h1>
 
 <h2 align="center">
 	Projeto desenvolvido na 10.º edição da Semana Omnistack que visa conectar desenvolvedores próximos a sua região.
