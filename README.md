@@ -20,6 +20,8 @@
 	<img src="./.images/mobile_screenshot.png" alt="Interface mobile" />
 </h4>
 
+<br />
+
 ## :computer: Tecnologias usadas
 
 * NodeJS
