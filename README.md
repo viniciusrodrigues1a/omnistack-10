@@ -9,7 +9,7 @@
 <h3 align="center">
 	Interface web:
 	<br />
-	<img src="./.images/web_screenshot.png" alt="Interface web" />
+	<img src="./.github/web_screenshot.png" alt="Interface web" />
 </h3>
 
 <br />
@@ -17,7 +17,7 @@
 <h3 align="center">
 	Interface mobile:
 	<br />
-	<img src="./.images/mobile_screenshot.png" alt="Interface mobile" />
+	<img src="./.github/mobile_screenshot.png" alt="Interface mobile" />
 </h3>
 
 <br />
